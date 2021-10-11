@@ -109,19 +109,24 @@ namespace Invertex.Unity.URP
             }
         }
 
+        private void Reinitialize()
+        {
+            rb2D = GetComponent<Rigidbody2D>();
+            compositeCollider = GetComponent<CompositeCollider2D>();
+            tilemapCollider = GetComponent<TilemapCollider2D>();
+            Regenerate();
+        }
+
         //Need to regenerate Shadow data after script recompilation for some reason... 
         void OnEnable()
         {
-            Regenerate();
+            Reinitialize();
         }
 
         private void Reset()
         {
-            rb2D = GetComponent<Rigidbody2D>();
+            Reinitialize();
             if (rb2D.bodyType == RigidbodyType2D.Dynamic) { rb2D.bodyType = RigidbodyType2D.Static; }
-            compositeCollider = GetComponent<CompositeCollider2D>();
-            tilemapCollider = GetComponent<TilemapCollider2D>();
-            Regenerate();
         }
     }
 }
