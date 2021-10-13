@@ -100,9 +100,9 @@ namespace Invertex.Unity.URP
 
             if (pathCount < shadowPaths)
             {
-                for (int p = shadowPaths - 1; p > pathCount; p--)
+                for (int p = shadowPaths - 1; p >= pathCount; p--)
                 {
-                    DestroySafe(shadowCasterPaths[p]);
+                    DestroySafe(shadowCasterPaths[p].gameObject);
                 }
 
                 shadowCasterPaths.RemoveRange(pathCount, shadowPaths - pathCount);
