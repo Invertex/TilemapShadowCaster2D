@@ -20,8 +20,8 @@ namespace Invertex.Unity.URP
         [SerializeField, HideInInspector] TilemapCollider2D tilemapCollider;
         [SerializeField, HideInInspector] Rigidbody2D rb2D;
 
-        private readonly List<ShadowCaster2D> shadowCasterPaths = new(32);
-        private readonly List<Vector2> pathBuffer = new(256);
+        private readonly List<ShadowCaster2D> shadowCasterPaths = new List<ShadowCaster2D>(32);
+        private readonly List<Vector2> pathBuffer = new List<Vector2>(256);
 
         static readonly FieldInfo boundingSpherefield = typeof(ShadowCaster2D).GetField("m_ProjectedBoundingSphere", BindingFlags.NonPublic | BindingFlags.Instance);
         static readonly MethodInfo generateShadowMeshMethod = typeof(ShadowCaster2D).Assembly.GetType("UnityEngine.Rendering.Universal.ShadowUtility").GetMethod("GenerateShadowMesh", BindingFlags.Public | BindingFlags.Static);
